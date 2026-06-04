@@ -226,7 +226,6 @@ async function startRecovery(){
 
     const users=Object.keys(data[getGuildId()]);
 
-    console.log(`Starting recovery for ${users.length} users`);
 
     let success=0;
     let failed=0;
@@ -249,9 +248,7 @@ ${getBackupInvite()}`
 
             success++;
 
-            console.log(
-                `[SUCCESS] ${user.tag}`
-            );
+
 
             await sleep(1);
 
@@ -259,15 +256,12 @@ ${getBackupInvite()}`
 
             failed++;
 
-            console.log(
-                `[FAILED] ${userId}`
-            );
+            
+            
         }
     }
 
-    console.log(
-        `Recovery complete | Success: ${success} | Failed: ${failed}`
-    );
+
     return {
     success,
     failed,
@@ -285,7 +279,6 @@ client.once("ready",async()=>{
         return;
     }
 
-    console.log(`Syncing ${guild.name}...`);
 
     await guild.members.fetch();
 
@@ -305,11 +298,7 @@ client.once("ready",async()=>{
 
     saveData(data);
 
-    console.log(
-        `Saved ${Object.keys(data[guild.id]).length} members`
-    );
 
-    console.log("Initial sync complete");
 });
 
 client.on("guildMemberAdd",member=>{
@@ -329,9 +318,7 @@ client.on("guildMemberAdd",member=>{
 
     saveData(data);
 
-    console.log(
-        `${member.user.tag} joined`
-    );
+
 });
 
 client.on("guildMemberRemove",member=>{
@@ -349,9 +336,7 @@ client.on("guildMemberRemove",member=>{
         saveData(data);
     }
 
-    console.log(
-        `${member.user.tag} left`
-    );
+
 });
 
 client.on("messageCreate",async(message)=>{
