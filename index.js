@@ -250,7 +250,7 @@ ${getBackupInvite()}`
 
 
 
-            await sleep(1);
+            await sleep(1500);
 
         }catch(error){
 
